@@ -11,8 +11,8 @@ This module uses https://github.com/dathbe/MMM-CustomText to provide a message o
 ```bash
 cd ~/MagicMirror/modules
 git clone https://github.com/ctd-mh3/MMM-AptUpdateNotifier
-git clone https://github.com/dathbe/MMM-CustomText'
-sudo mv ./MMM-AptUpdateNotifier/check_for_apt_updates.sh /usr/local/bin/.'
+git clone https://github.com/dathbe/MMM-CustomText
+sudo mv ./MMM-AptUpdateNotifier/check_for_apt_updates.sh /usr/local/bin/.
 ```
 Ensure /usr/local/bin/check_for_apt_updates.sh is executable by the user MagicMirror is run under
 -Allow check_for_apt_updates.sh to be run without sudo your MagicMirror user by editing sudoers
