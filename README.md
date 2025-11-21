@@ -80,7 +80,7 @@ Below is bare minimum example relevant parts of a `config/config.js` file:
 		{
   			module: "MMM-AptUpdateNotifier",
   			position: "bottom_bar", 
-'''
+```
 
 Below is example with more optional configuration options used in `config/config.js` file:
 ```
@@ -106,7 +106,7 @@ Below is example with more optional configuration options used in `config/config
    				customTextUniqueID: "aptInfo", // Must match uniqueID used in MMM-CustomText config
 			}
 		},
-'''
+```
 
 
 ## Future Potential Updates
