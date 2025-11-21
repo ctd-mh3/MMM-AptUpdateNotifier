@@ -58,7 +58,7 @@ The following properties can be configured:
 |`useSudo`		|*Optional* Is sudo needed to run the above cmd as MagicMirror user<br><br>**Type:** boolean<br>**Default:** `true`
 |`timeoutMS`	|*Optional* Timeout (in milliseconds) used when attempting to run the above command<br><br>**Type:** `int`<br>**Default:** `30000` (30 seconds)
 |`checkIntervalMS`	|*Optional* Interval (in milliseconds) for how often to run the above command to check for apt updates<br><br>**Type:** `int`<br>**Default:** `3600000` (1 hr)
-|`customTextUniqueID`	|*Optional* uniqueID for MMM-CustomText field to place results-<br><br>**Type:** `string<br>**Default:** `"aptUpdateNotifier""`
+|`customTextUniqueID`	|*Optional* uniqueID for MMM-CustomText field to place results-<br><br>**Type:** `string`<br>**Default:** `"aptUpdateNotifier"`
 
 
 ### Sample Configuration
