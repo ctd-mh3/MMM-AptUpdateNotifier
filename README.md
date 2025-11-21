@@ -24,7 +24,7 @@ Ensure /usr/local/bin/check_for_apt_updates.sh is executable by the user MagicMi
 
 ### MagicMirror² Configuration
 
-To use this module, add the following configuration block to the modules array in the `config/config.js` file:
+To use this module, add needed configuration information to `~/MagicMirror/config/config.js` file.  Example is below:
 ```js
 var config = {
     modules: [
@@ -34,7 +34,7 @@ var config = {
  	 		// Place where you want this message
  	 		position: "top_bar",  
   			config: {
-			    // Must ensure this uniqueID matches default ("aptUpdateNotifier") in MMM-AptUpdateNotifier or value passed in MMM-AptUpdateNotifier config
+			    // Must ensure this uniqueID matches default ("aptUpdateNotifier") in MMM-AptUpdateNotifier.js or value passed in MMM-AptUpdateNotifier config portion of config.js
     			uniqueID: "aptUpdateNotifier", 
   			}
 		},
@@ -55,7 +55,7 @@ The following properties can be configured:
 | Option                | Description
 |-----------------------|------------
 |`command`	|*Optional* The shell script including full path which will output the number of packages which have an update available.<br><br>**Type:** `string`<br>**Default:** `"/usr/local/bin/check_for_apt_updates.sh"`
-|`useSudo`		|*Optional* Is sudo needed to run the above cmd as MagicMirror user<br><br>**Type:** boolean<br>**Default:** `true`
+|`useSudo`		|*Optional* Is sudo needed to run the above cmd as MagicMirror user<br><br>**Type:** `boolean`<br>**Default:** `true`
 |`timeoutMS`	|*Optional* Timeout (in milliseconds) used when attempting to run the above command<br><br>**Type:** `int`<br>**Default:** `30000` (30 seconds)
 |`checkIntervalMS`	|*Optional* Interval (in milliseconds) for how often to run the above command to check for apt updates<br><br>**Type:** `int`<br>**Default:** `3600000` (1 hr)
 |`customTextUniqueID`	|*Optional* uniqueID for MMM-CustomText field to place results-<br><br>**Type:** `string`<br>**Default:** `"aptUpdateNotifier"`
@@ -63,7 +63,7 @@ The following properties can be configured:
 
 ### Sample Configuration
 
-Below is bare minimum example relevant parts of a `config/config.js` file:
+Below is a bare minimum example of relevant parts of a `config/config.js` file:
 ```
 		{
   			module: "MMM-CustomText",
@@ -82,7 +82,7 @@ Below is bare minimum example relevant parts of a `config/config.js` file:
   			position: "bottom_bar", 
 ```
 
-Below is example with more optional configuration options used in `config/config.js` file:
+Below is an example with more optional configuration options used in `config/config.js` file:
 ```
 		{
   			module: "MMM-CustomText",
