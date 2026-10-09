@@ -22,8 +22,7 @@ Module.register("MMM-AptUpdateNotifier", {
     // Understand that checkIntervalInMS is not used in APT_START_CHECK but for simplicity leaving all defaults in the one structure
     const mergedConfig = { ...defaults, ...(self.config || {}) };
 
-    // Trigger first check immediately, then on interval
-    this.sendSocketNotification("APT_START_CHECK", this.config);
+    // First check is triggered on MODULE_DOM_CREATED (see notificationReceived)
 
     // Set check interval to what was provided in config.js or use default
     const checkIntervalInMS = this.config.checkIntervalMS || this.defaults.checkIntervalInMS;
@@ -32,6 +31,12 @@ Module.register("MMM-AptUpdateNotifier", {
 
     // Set this check to occur at regular intervals
     setInterval(function() { self.sendSocketNotification("APT_START_CHECK", mergedConfig); }, checkIntervalInMS);
+  },
+
+  notificationReceived: function(notification, payload) {
+    if (notification === "MODULE_DOM_CREATED") {
+        this.sendSocketNotification("APT_START_CHECK", this.config);
+    }
   },
 
   // Keep getDom minimal and empty (module is hidden anyway)
