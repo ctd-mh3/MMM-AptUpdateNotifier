@@ -1,7 +1,7 @@
 Module.register("MMM-AptUpdateNotifier", {
 
   defaults: {
-    checkIntervalInMS: 60 * 60 * 1000, // 1 hour
+    checkIntervalMS: 60 * 60 * 1000, // 1 hour
     command: "/usr/local/bin/check_for_apt_updates.sh",
     useSudo: true,
     timeoutMS: 30000, // 30 seconds
@@ -18,19 +18,17 @@ Module.register("MMM-AptUpdateNotifier", {
 
     var self = this;
 
-    // Perform shallow merge with self.config from MagicMirror/config/config.js having precedence
-    // Understand that checkIntervalInMS is not used in APT_START_CHECK but for simplicity leaving all defaults in the one structure
-    const mergedConfig = { ...defaults, ...(self.config || {}) };
+    // Note: MagicMirror already merges this.defaults with config.js into this.config
 
     // First check is triggered on MODULE_DOM_CREATED (see notificationReceived)
 
     // Set check interval to what was provided in config.js or use default
-    const checkIntervalInMS = this.config.checkIntervalMS || this.defaults.checkIntervalInMS;
+    const checkIntervalMS = this.config.checkIntervalMS;
 
-    this.logInformation("info", "MMM-AptUpdateNotifier: setting command interval (MS) to " + checkIntervalInMS);
+    this.logInformation("info", "MMM-AptUpdateNotifier: setting command interval (MS) to " + checkIntervalMS);
 
     // Set this check to occur at regular intervals
-    setInterval(function() { self.sendSocketNotification("APT_START_CHECK", mergedConfig); }, checkIntervalInMS);
+    setInterval(function() { self.sendSocketNotification("APT_START_CHECK", self.config); }, checkIntervalMS);
   },
 
   notificationReceived: function(notification, payload) {
